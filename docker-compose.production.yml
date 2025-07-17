@@ -9,16 +9,22 @@ services:
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER:${POSTGRES_USER}}
-      POSTGRES_PASSWORD:${POSTGRES_PASSWORD}
-      POSTGRES_DB:${POSTGRES_DB}
-      DB_HOST:${DB_HOST}
-      DB_PORT:${DB_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
     # env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
   kittygram_backend:
     image: ludwigshtraube/kittygram_backend
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
     # env_file: .env
     volumes:
       - static:/kittygram_static
