@@ -1,26 +1,90 @@
-#  Как работать с репозиторием финального задания
+![Main Kittygram workflow](https://github.com/Shtraube/kittygram_final/actions/workflows/main.yml/badge.svg?event=push)
 
-## Что нужно сделать
+### Описание:
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+Kittygram. Сервис, предназначенный для публикации сведений о котах.
+Позволяет продемонстрировать миру фото своего котика и его достижения.
 
-## Как проверить работу с помощью автотестов
+### Как запустить проект локально:
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
+Клонировать репозиторий и перейти в него в командной строке:
+
+```
+git clone https://github.com/Shtraube/kittygram_final.git
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+```
+cd kittygram_final
+```
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+Cоздать и активировать виртуальное окружение:
 
-## Чек-лист для проверки перед отправкой задания
+```
+<sub>Для Linux:</sub>
+python3 -m venv env
+source env/bin/activate
+<sub>Для Windows:</sub>
+python -m venv env
+source env/scripts/activate
+```
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+Установить зависимости из файла requirements.txt:
+
+```
+python3 -m pip install --upgrade pip
+```
+
+```
+pip install -r requirements.txt
+```
+
+Выполнить миграции:
+
+```
+python3 manage.py migrate
+```
+
+Запустить проект:
+
+```
+python3 manage.py runserver
+```
+
+### Примеры некоторых запросов:
+
+GET
+```
+/api/cats/
+/api/cats/{id}/
+/api/achievements/
+/api/achievements/{id}/
+/api/users/
+/api/users/me/
+/api/users/{id}/
+```
+POST
+```
+/api/cats/
+/api/achievements/
+/api/users/
+```
+PATCH
+```
+/api/achievements/{id}/
+/api/users/me/
+/api/users/{id}/
+```
+DELETE
+```
+/api/cats/{id}/
+/api/achievements/{id}/
+/api/users/me/
+/api/users/{id}/
+```
+
+### Использованные технологии:
+
+- [Django 3.2.3](https://docs.djangoproject.com/en/5.2/releases/3.2.3/)
+Основной фреймворк для работы с бэкендом проекта.
+- [Django REST framework 3.12.4](https://www.django-rest-framework.org/community/3.12-announcement/#django-rest-framework-312)
+Фреймворк, использованный для создания API проекта.
