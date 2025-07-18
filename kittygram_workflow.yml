@@ -171,5 +171,5 @@ jobs:
         message: |
           Деплой успешно выполнен!
           Автор: **${{ github.actor }}**
-          Коммит: "${{ format('{0}', github.event.commits[0].message | replace('\n', ' ')) }}"
+          Коммит: ${{ github.event.commits[0].message }}
           https://github.com/${{ github.repository }}/commit/${{ github.sha }}
