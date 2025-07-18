@@ -20,11 +20,11 @@ services:
   kittygram_backend:
     image: ludwigshtraube/kittygram_backend
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
     # env_file: .env
     volumes:
       - static:/kittygram_static
