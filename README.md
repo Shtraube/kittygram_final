@@ -50,6 +50,31 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
+### Как запустить проект локально в docker-контейнерах:
+
+Выполнить команды:
+- в директории backend:
+```
+docker build -t ludwigshtraube/kittygram_backend .
+docker push ludwigshtraube/kittygram_backend
+```
+
+- в директории frontend:
+```
+docker build -t ludwigshtraube/kittygram_frontend .
+docker push ludwigshtraube/kittygram_frontend
+```
+
+- в директории nginx:
+```
+docker build -t ludwigshtraube/kittygram_gateway .
+docker push ludwigshtraube/kittygram_gateway
+```
+- в корневой директории проекта, где содержится файл docker-compose.yml:
+```
+docker compose up
+```
+
 ### Примеры некоторых запросов:
 
 GET
